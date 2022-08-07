@@ -3,4 +3,14 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
+  application:
+    name: stocks app
+
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+
+params:
+  token: pk_41934e024c124d91a01917b335a164a3
+  iex-cloud-url: https://cloud.iexapis.com/stable/
 
