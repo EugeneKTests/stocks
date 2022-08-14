@@ -5,6 +5,7 @@ package eugene.korovkin.stocks.jooq;
 
 
 import eugene.korovkin.stocks.jooq.tables.Company;
+import eugene.korovkin.stocks.jooq.tables.Position;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,6 +34,11 @@ public class Stocks extends SchemaImpl {
     public final Company COMPANY = Company.COMPANY;
 
     /**
+     * The table <code>stocks.position</code>.
+     */
+    public final Position POSITION = Position.POSITION;
+
+    /**
      * No further instances allowed
      */
     private Stocks() {
@@ -48,6 +54,7 @@ public class Stocks extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
-            Company.COMPANY);
+            Company.COMPANY,
+            Position.POSITION);
     }
 }

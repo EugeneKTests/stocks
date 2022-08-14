@@ -5,6 +5,7 @@ package eugene.korovkin.stocks.jooq;
 
 
 import eugene.korovkin.stocks.jooq.tables.Company;
+import eugene.korovkin.stocks.jooq.tables.Position;
 
 
 /**
@@ -17,4 +18,9 @@ public class Tables {
      * The table <code>stocks.company</code>.
      */
     public static final Company COMPANY = Company.COMPANY;
+
+    /**
+     * The table <code>stocks.position</code>.
+     */
+    public static final Position POSITION = Position.POSITION;
 }

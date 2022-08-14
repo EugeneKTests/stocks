@@ -1,12 +1,12 @@
 package eugene.korovkin.stocks;
 
+import eugene.korovkin.stocks.dto.DividendsRowDto;
+import eugene.korovkin.stocks.dto.Portfolio;
+import eugene.korovkin.stocks.iex.dto.CompanyDto;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RequestMapping("/stocks")
@@ -19,5 +19,20 @@ public class StocksController {
     @PostMapping("update")
     public void updateStocks(@RequestBody Set<String> symbols) {
         stocksService.updateCompanies(symbols);
+    }
+
+    @GetMapping
+    public List<CompanyDto> getCompanies() {
+        return stocksService.getCompanies();
+    }
+
+    @GetMapping("portfolio")
+    public Portfolio getPortfolio() {
+        return stocksService.getPortfolio();
+    }
+
+    @GetMapping("dividends")
+    public List<DividendsRowDto> getdDividends() {
+        return stocksService.getDividends();
     }
 }

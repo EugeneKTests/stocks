@@ -3,13 +3,10 @@ package eugene.korovkin.stocks.iex.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
-public class CompanyDto {
+public class CompanyDtoIex {
 
-    private UUID id;
     private String symbol;
     private String sector;
     private String companyName;

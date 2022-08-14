@@ -4,9 +4,12 @@
 package eugene.korovkin.stocks.jooq.tables;
 
 
+import eugene.korovkin.stocks.jooq.Keys;
 import eugene.korovkin.stocks.jooq.Stocks;
 import eugene.korovkin.stocks.jooq.tables.records.CompanyRecord;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import org.jooq.Field;
@@ -18,6 +21,7 @@ import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
 import org.jooq.TableOptions;
+import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
@@ -47,7 +51,7 @@ public class Company extends TableImpl<CompanyRecord> {
     /**
      * The column <code>stocks.company.id</code>.
      */
-    public final TableField<CompanyRecord, UUID> ID = createField(DSL.name("id"), SQLDataType.UUID, this, "");
+    public final TableField<CompanyRecord, UUID> ID = createField(DSL.name("id"), SQLDataType.UUID.nullable(false), this, "");
 
     /**
      * The column <code>stocks.company.symbol</code>.
@@ -105,6 +109,16 @@ public class Company extends TableImpl<CompanyRecord> {
     @Override
     public Schema getSchema() {
         return Stocks.STOCKS;
+    }
+
+    @Override
+    public UniqueKey<CompanyRecord> getPrimaryKey() {
+        return Keys.COMPANY_PKEY;
+    }
+
+    @Override
+    public List<UniqueKey<CompanyRecord>> getKeys() {
+        return Arrays.<UniqueKey<CompanyRecord>>asList(Keys.COMPANY_PKEY);
     }
 
     @Override
